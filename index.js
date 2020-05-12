@@ -14,15 +14,15 @@ async function run() {
     .split(/\n/)
     .filter((branch) => !!branch.trim())
     .map((branch) => {
-      const [, flag, value, hint] = branch.match(/([* ]) +([^ ]+) +(.+)/);
-      return { value, hint, disabled: flag === "*" };
+      const [, flag, value ] = branch.match(/([* ]) +([^ ]+) +(.+)/);
+      return { value, disabled: flag === "*" };
     });
+
   const suggestByValue = (input, choices) =>
     Promise.resolve(
-      choices.filter((i) => {
-        const results = matchSorter([{ ...i }], input, { keys: ["value"] });
-        return results.length > 0;
-      })
+      choices.filter(
+        (i) => matchSorter([{ ...i }], input, { keys: ["value"] }).length > 0
+      )
     );
 
   const { branch } = await prompts({
@@ -30,12 +30,8 @@ async function run() {
     name: "branch",
     suggest: suggestByValue,
     message: "Switch branch",
+    fallback: "Branch not found",
     choices,
-    hint: choices[0].hint,
-    warn: "current branch",
-    onState({ value }) {
-      this.hint = choices.find((c) => c.value === value).hint;
-    },
   });
 
   await checkout(branch);
