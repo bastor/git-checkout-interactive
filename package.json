@@ -1,6 +1,6 @@
 {
   "name": "@bastus/git-checkout-interactive",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Quick switch between git branches",
   "author": "Sebastian Maliszczak (original version Pete Cook)",
   "license": "MIT",
