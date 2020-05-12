@@ -5,7 +5,7 @@ Quick switch between git branches witch autocomplete search.
 ### Install
 
 ```bash
-npm install -g bastus@git-checkout-interactive
+npm i -g @bastus/git-checkout-interactive
 ```
 
 ### Usage
