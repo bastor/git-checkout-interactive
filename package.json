@@ -1,5 +1,5 @@
 {
-  "name": "@username/git-checkout-interactive",
+  "name": "@bastus/git-checkout-interactive",
   "version": "1.0.2",
   "description": "Quick switch between git branches",
   "author": "Sebastian Maliszczak (original version Pete Cook)",
